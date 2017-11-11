@@ -8,7 +8,7 @@ This library provides a PHP wrapper around pdfunite.
 
 run `composer require koerel/pdfunite`
 
-## usage
+## Usage
 
 The join method accepts any number of input files, the last parameter is the output file.
 ```pdf
