@@ -19,7 +19,23 @@ class PdfUnite
         }
         $this->output = array_pop($files);
         $input = implode(' ', $files);
-        exec("{$this->binary} {$input} {$this->output}");
+        $command = "{$this->binary} {$input} {$this->output}";
+        $descriptors = [
+            1 => ['pipe', 'w'],
+            2 => ['pipe', 'w'],
+        ];
+        $process = proc_open($command, $descriptors, $pipes);
+        if (!is_resource($process)) {
+            throw new \Exception("Could not run pdfunite");
+        }
+        $error = stream_get_contents($pipes[2]);
+        fclose($pipes[1]);
+        fclose($pipes[2]);
+        $exitCode = proc_close($process);
+        if ($exitCode !== 0) {
+            throw new \Exception($error);
+        }
+
 
         return $this;
     }
