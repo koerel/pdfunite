@@ -1,0 +1,17 @@
+{
+    "name": "koerel/pdfunite",
+    "description": "A php wrapper for pdfunite",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Karel Eeckelaert",
+            "email": "mail@kareleeckelaert.be"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Koerel\\Pdfunite\\": "src/"
+        }
+    },
+    "require": {}
+}
