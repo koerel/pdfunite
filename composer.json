@@ -13,5 +13,7 @@
             "Koerel\\PdfUnite\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+        "php":"^5.6"
+    }
 }
