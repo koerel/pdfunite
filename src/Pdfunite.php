@@ -1,25 +1,25 @@
 <?php
 
-namespace Koerel\Pdfunite;
+namespace Koerel\PdfUnite;
 
-class Pdfunite
+class PdfUnite
 {
     private $binary;
     private $output;
 
-    public function __construct(array $options = [])
+    public function __construct($binary = null)
     {
-        $this->binary = $options['binary'] ?? 'pdfunite';
+        $this->binary = $binary ?: 'pdfunite';
     }
 
     public function join(...$files)
     {
         if (count($files) < 2) {
-            throw new Exception("pdfunite requires at least 2 arguments");
+            throw new \Exception("pdfunite requires at least 2 arguments");
         }
         $this->output = array_pop($files);
         $input = implode(' ', $files);
-        exec("{$this->binary} {$input} {$this->output}");
+        exec("{$this->binary} {$input} {$this->output} 2>$1 -v");
 
         return $this;
     }
@@ -27,7 +27,7 @@ class Pdfunite
     public function output()
     {
         if (null === $this->output) {
-            throw new Exception('Please run join() first');
+            throw new \Exception('Output not found');
         }
 
         return file_get_contents($this->output);
@@ -36,12 +36,14 @@ class Pdfunite
     public function download()
     {
         if (null === $this->output) {
-            throw new Exception('Please run join() first');
+            throw new \Exception('Output not found');
         }
+        $fileInfo = pathinfo($this->output);
+        $filename = $fileInfo['filename'] . '.' . strtoupper($fileInfo['extension']);
         header('Content-Type: application/pdf');
-        header("Content-Disposition: attachment; filename={$this->output}");
+        header("Content-Disposition: attachment; filename={$filename}");
+        header('Content-Length: ' . filesize($this->output));
         header('Pragma: no-cache');
-
-        return file_get_contents($this->output);
+        readfile($this->output);
     }
 }

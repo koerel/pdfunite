@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Koerel\\Pdfunite\\": "src/"
+            "Koerel\\PdfUnite\\": "src/"
         }
     },
     "require": {}
