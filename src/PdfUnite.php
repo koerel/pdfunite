@@ -19,7 +19,7 @@ class PdfUnite
         }
         $this->output = array_pop($files);
         $input = implode(' ', $files);
-        exec("{$this->binary} {$input} {$this->output} 2>$1 -v");
+        exec("{$this->binary} {$input} {$this->output}");
 
         return $this;
     }
