@@ -4,14 +4,31 @@ namespace Koerel\PdfUnite;
 
 class PdfUnite
 {
+    /**
+     * @var string
+     */
     private $binary;
+
+    /**
+     * @var string
+     */
     private $output;
 
+    /**
+     * Optionally pass in the pdfunite binary location
+     * @param null|string $binary
+     */
     public function __construct($binary = null)
     {
         $this->binary = $binary ?: 'pdfunite';
     }
 
+    /**
+     * Accepts any number of input files, last parameter is the output file
+     * @param array ...$files
+     * @return $this
+     * @throws \Exception
+     */
     public function join(...$files)
     {
         if (count($files) < 2) {
@@ -36,10 +53,13 @@ class PdfUnite
             throw new \Exception($error);
         }
 
-
         return $this;
     }
 
+    /**
+     * @return bool|string
+     * @throws \Exception
+     */
     public function output()
     {
         if (null === $this->output) {
@@ -49,6 +69,9 @@ class PdfUnite
         return file_get_contents($this->output);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function download()
     {
         if (null === $this->output) {

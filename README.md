@@ -20,7 +20,7 @@ If the pdfunite-binary is not in the $PATH you can pass it's path to the constru
 $unite = new Koerel\PdfUnite\PdfUnite('path/to/pdfunite');
 $unite->join('file1.pdf', 'file2.pdf', 'output.pdf');
 ```
-To get the result as a string as a string you can chain the output() method
+To get the result as a string you can chain the output() method
 ```pdf
 $unite = new Koerel\PdfUnite\PdfUnite();
 $pdfData = $unite->join('file1.pdf', 'file2.pdf', 'output.pdf')->output();
