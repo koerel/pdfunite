@@ -1,5 +1,8 @@
 # A PHP wrapper for pdfunite
 
+[![StyleCI](https://styleci.io/repos/110376362/shield?branch=master)](https://styleci.io/repos/110376362)
+
+
 pdfunite is part of the [poppler](https://poppler.freedesktop.org/) PDF library.
 It is a command-line tool use to join PDF files.
 This library provides a PHP wrapper around pdfunite.
