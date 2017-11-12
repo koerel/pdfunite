@@ -2,6 +2,7 @@
 
 [![StyleCI](https://styleci.io/repos/110376362/shield?branch=master)](https://styleci.io/repos/110376362)
 
+[![Build Status](https://travis-ci.org/koerel/pdfunite.svg?branch=develop)](https://travis-ci.org/koerel/pdfunite)
 
 pdfunite is part of the [poppler](https://poppler.freedesktop.org/) PDF library.
 It is a command-line tool use to join PDF files.
